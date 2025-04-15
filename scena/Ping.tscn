@@ -48,8 +48,8 @@ shape = SubResource("RectangleShape2D_6t488")
 position = Vector2(576.25, 658)
 shape = SubResource("RectangleShape2D_0nyxd")
 
-[node name="personaje_blanco" parent="." instance=ExtResource("2_12tci")]
-
 [node name="Raqueta_negra" parent="." instance=ExtResource("3_ciqov")]
 
 [node name="Pelota" parent="." instance=ExtResource("4_u07bw")]
+
+[node name="personaje_blanco" parent="." instance=ExtResource("2_12tci")]

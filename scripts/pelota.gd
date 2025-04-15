@@ -18,3 +18,25 @@ func _ready() -> void:
 		
 	else:
 		velocity.y -= velocidad
+
+func _physics_process(delta: float) -> void:
+	
+	position += velocity* delta
+	
+	var colision = move_and_collide(velocity * delta)
+	
+	if colision :
+		velocity = velocity.bounce(colision.get_normal())
+		
+	tiempo +=delta
+	
+	if tiempo >= tiempo_intervalo:
+		velocity *= 1 + burs_velocidad / 100
+		
+		tiempo = 0
+		
+#func update_animation():
+#	if velocidad >= 400 :
+#		animation_player.play("burst")
+#	else:
+#		animation_player.play ("idle")

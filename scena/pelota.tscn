@@ -348,7 +348,7 @@ position = Vector2(7.62939e-06, 32)
 scale = Vector2(0.7625, 0.65)
 sprite_frames = SubResource("SpriteFrames_lwx53")
 animation = &"idle"
-frame_progress = 0.357091
+frame_progress = 0.551193
 speed_scale = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -75,7 +75,7 @@ animations = [{
 size = Vector2(26, 109)
 
 [node name="personaje_blanco" type="CharacterBody2D"]
-position = Vector2(32, 320)
+position = Vector2(25, 320)
 script = ExtResource("1_chpxh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
