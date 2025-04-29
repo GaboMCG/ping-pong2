@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var velocidad_impulso = 30
+var velocidad_impulso = 50
 
 func _physics_process(delta: float) -> void:
 	

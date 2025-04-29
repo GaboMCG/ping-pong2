@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
-var velocidad = 200
-var burs_velocidad = 10
-var tiempo_intervalo = 5
+var velocidad = 150
+var burs_velocidad = 2
+var tiempo_intervalo = 8
 var tiempo = 0
+
+@onready var animation_player = $AnimatedSprite2D
 
 func _ready() -> void:
 	
@@ -21,7 +23,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	position += velocity* delta
+	position += velocity * delta
 	
 	var colision = move_and_collide(velocity * delta)
 	
@@ -31,12 +33,15 @@ func _physics_process(delta: float) -> void:
 	tiempo +=delta
 	
 	if tiempo >= tiempo_intervalo:
-		velocity *= 1 + burs_velocidad / 100
+		velocity *= 0.1 + burs_velocidad / 2
+		velocidad *= 0.1 + burs_velocidad / 2
 		
 		tiempo = 0
 		
-#func update_animation():
-#	if velocidad >= 400 :
-#		animation_player.play("burst")
-#	else:
-#		animation_player.play ("idle")
+	update_animation()
+		
+func update_animation():
+	if velocidad >= 280:
+		animation_player.play("burst")
+	else:
+		animation_player.play ("idle")

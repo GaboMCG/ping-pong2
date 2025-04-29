@@ -336,7 +336,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8anuy"]
 
-[node name="Pelota" type="CharacterBody2D"]
+[node name="Pelota" type="CharacterBody2D" groups=["Pelota"]]
 position = Vector2(576, 320)
 script = ExtResource("1_ot87f")
 
@@ -347,8 +347,8 @@ shape = SubResource("CircleShape2D_d23ul")
 position = Vector2(7.62939e-06, 32)
 scale = Vector2(0.7625, 0.65)
 sprite_frames = SubResource("SpriteFrames_lwx53")
-animation = &"idle"
-frame_progress = 0.551193
+animation = &"burst"
+frame_progress = 0.404901
 speed_scale = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]

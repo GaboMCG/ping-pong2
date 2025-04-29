@@ -1,15 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://behaifk7njljf"]
+[gd_scene load_steps=15 format=3 uid="uid://behaifk7njljf"]
 
 [ext_resource type="Texture2D" uid="uid://cb0wageevi4tm" path="res://recursos/21 sin título_20250325175624.png" id="1_57r1s"]
+[ext_resource type="Script" path="res://scena/ping.gd" id="1_auryn"]
 [ext_resource type="PackedScene" uid="uid://dc7hy1v2nvvue" path="res://scena/personaje_blanco.tscn" id="2_12tci"]
 [ext_resource type="PackedScene" uid="uid://c881k16sym3eb" path="res://scena/personaje_negro.tscn" id="3_ciqov"]
 [ext_resource type="PackedScene" uid="uid://t47jx3h2qd0u" path="res://scena/pelota.tscn" id="4_u07bw"]
+[ext_resource type="FontFile" uid="uid://cggmb64q23tb" path="res://recursos/Game Bubble.otf" id="5_4yyyb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kh14t"]
+font = ExtResource("5_4yyyb")
+font_size = 500
+font_color = Color(1, 1, 1, 0.313726)
+shadow_size = 50
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_43w6m"]
+font = ExtResource("5_4yyyb")
+font_size = 500
+font_color = Color(0, 0, 0, 0.784314)
+shadow_size = 50
+shadow_color = Color(1, 1, 1, 0.0588235)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdd66"]
 size = Vector2(20, 650)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2xre"]
+size = Vector2(29, 671)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybfq1"]
 size = Vector2(19.25, 649)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50mh8"]
+size = Vector2(23, 649)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6t488"]
 size = Vector2(1120, 20)
@@ -18,11 +40,32 @@ size = Vector2(1120, 20)
 size = Vector2(1120.5, 20)
 
 [node name="Ping" type="Node2D"]
+script = ExtResource("1_auryn")
 
 [node name="Fondo" type="Sprite2D" parent="."]
 position = Vector2(576, 324.5)
 scale = Vector2(1.80312, 1.6225)
 texture = ExtResource("1_57r1s")
+
+[node name="Puntaje1" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 3.0
+offset_right = 569.0
+offset_bottom = 647.0
+text = "0"
+label_settings = SubResource("LabelSettings_kh14t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Puntaje2" type="Label" parent="."]
+offset_left = 590.0
+offset_top = 6.0
+offset_right = 1114.0
+offset_bottom = 648.0
+text = "0"
+label_settings = SubResource("LabelSettings_43w6m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Pared izquierda" type="StaticBody2D" parent="."]
 
@@ -30,11 +73,23 @@ texture = ExtResource("1_57r1s")
 position = Vector2(6, 324)
 shape = SubResource("RectangleShape2D_rdd66")
 
+[node name="Area2D" type="Area2D" parent="Pared izquierda"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared izquierda/Area2D"]
+position = Vector2(4.5, 325.5)
+shape = SubResource("RectangleShape2D_e2xre")
+
 [node name="Pared derecha" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pared derecha"]
 position = Vector2(1147, 324.5)
 shape = SubResource("RectangleShape2D_ybfq1")
+
+[node name="Area2D2" type="Area2D" parent="Pared derecha/CollisionShape2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared derecha/CollisionShape2D/Area2D2"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_50mh8")
 
 [node name="Pared Techo" type="StaticBody2D" parent="."]
 
@@ -50,6 +105,9 @@ shape = SubResource("RectangleShape2D_0nyxd")
 
 [node name="Raqueta_negra" parent="." instance=ExtResource("3_ciqov")]
 
+[node name="personaje_blanco" parent="." instance=ExtResource("2_12tci")]
+
 [node name="Pelota" parent="." instance=ExtResource("4_u07bw")]
 
-[node name="personaje_blanco" parent="." instance=ExtResource("2_12tci")]
+[connection signal="body_entered" from="Pared izquierda/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Pared derecha/CollisionShape2D/Area2D2" to="." method="_on_area_2d_2_body_entered"]
