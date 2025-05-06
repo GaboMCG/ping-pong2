@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://jvmdv22l3lqi"]
+
+[ext_resource type="Texture2D" uid="uid://d3fovv7uru337" path="res://recursos/Ganador.png" id="1_4nv3y"]
+[ext_resource type="Script" path="res://scena/ganador_2.gd" id="1_hny2m"]
+[ext_resource type="FontFile" uid="uid://cggmb64q23tb" path="res://recursos/Game Bubble.otf" id="2_23g37"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rud2c"]
+font = ExtResource("2_23g37")
+font_size = 50
+
+[node name="Node" type="Node2D"]
+script = ExtResource("1_hny2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(566, 321)
+scale = Vector2(1.529, 1.275)
+texture = ExtResource("1_4nv3y")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 472.0
+offset_top = 240.0
+offset_right = 812.0
+offset_bottom = 407.0
+text = "Player 2
+"
+label_settings = SubResource("LabelSettings_rud2c")
+
+[node name="volver" type="Button" parent="."]
+offset_left = 364.0
+offset_top = 448.0
+offset_right = 792.0
+offset_bottom = 560.0
+theme_override_fonts/font = ExtResource("2_23g37")
+theme_override_font_sizes/font_size = 30
+text = "VOLVER A JUGAR"
+
+[connection signal="pressed" from="volver" to="." method="_on_volver_pressed"]

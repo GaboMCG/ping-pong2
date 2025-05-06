@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var velocidad = 150
-var burs_velocidad = 2
+var velocidad = 100.0
+var burs_velocidad = 10.0
 var tiempo_intervalo = 8
 var tiempo = 0
 
@@ -33,15 +33,20 @@ func _physics_process(delta: float) -> void:
 	tiempo +=delta
 	
 	if tiempo >= tiempo_intervalo:
-		velocity *= 0.1 + burs_velocidad / 2
-		velocidad *= 0.1 + burs_velocidad / 2
+		velocity *= 1.0 + burs_velocidad / 100.0
 		
 		tiempo = 0
+		
+		print("velocidad (despues del aumento):", velocity)
 		
 	update_animation()
 		
 func update_animation():
-	if velocidad >= 280:
+	var random_x_direction = 1 if randf() < 0.5 else -1
+	var random_y_direction = 1 if randf() < 0.5 else -1
+	var velocidad_inicial = 180
+	
+	if velocity >= Vector2 (150,150) or velocity <= Vector2 (-150,-150):
 		animation_player.play("burst")
 	else:
 		animation_player.play ("idle")
