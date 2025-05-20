@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://4di052aqud81"]
 
-[ext_resource type="Script" path="res://scena/ganador_1.gd" id="1_bwmnu"]
+[ext_resource type="Script" path="res://scripts/ganador_1.gd" id="1_bwmnu"]
 [ext_resource type="Texture2D" uid="uid://d3fovv7uru337" path="res://recursos/Ganador.png" id="1_h15qy"]
 [ext_resource type="FontFile" uid="uid://cggmb64q23tb" path="res://recursos/Game Bubble.otf" id="2_ixlx3"]
 
@@ -34,4 +34,13 @@ theme_override_fonts/font = ExtResource("2_ixlx3")
 theme_override_font_sizes/font_size = 30
 text = "VOLVER A JUGAR"
 
+[node name="Exit" type="Button" parent="."]
+offset_left = 248.0
+offset_top = 328.0
+offset_right = 369.0
+offset_bottom = 379.0
+theme_override_font_sizes/font_size = 30
+text = "Salir"
+
 [connection signal="pressed" from="volver" to="." method="_on_volver_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

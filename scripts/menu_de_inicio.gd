@@ -1,5 +1,6 @@
-extends Node2D
+extends Control
 
 
-func _on_volver_pressed() -> void:
+
+func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scena/Ping.tscn")

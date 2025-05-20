@@ -39,12 +39,15 @@ func _physics_process(delta: float) -> void:
 		
 		print("velocidad (despues del aumento):", velocity)
 		
-	update_animation()
+	if velocity > Vector2 (0,0):
+		$AnimatedSprite2D.flip_h = false
+	elif velocity < Vector2 (0,0):
+		$AnimatedSprite2D.flip_h = true
 		
+	update_animation()
+	
 func update_animation():
-	var random_x_direction = 1 if randf() < 0.5 else -1
-	var random_y_direction = 1 if randf() < 0.5 else -1
-	var velocidad_inicial = 180
+
 	
 	if velocity >= Vector2 (150,150) or velocity <= Vector2 (-150,-150):
 		animation_player.play("burst")

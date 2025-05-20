@@ -105,6 +105,7 @@ position = Vector2(576.25, 658)
 shape = SubResource("RectangleShape2D_0nyxd")
 
 [node name="Raqueta_negra" parent="." instance=ExtResource("3_ciqov")]
+rotation = 3.14159
 
 [node name="personaje_blanco" parent="." instance=ExtResource("2_12tci")]
 
@@ -113,6 +114,11 @@ shape = SubResource("RectangleShape2D_0nyxd")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Poder1" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
 [connection signal="body_entered" from="Pared izquierda/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Pared derecha/Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Poder1" to="." method="_on_timer_2_timeout"]

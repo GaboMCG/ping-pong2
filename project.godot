@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="bing bong bom bom ;*"
-run/main_scene="res://scena/Ping.tscn"
+run/main_scene="res://scena/menu_de_inicio.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [global_group]
 
 Pelota=""
+poderes=""
 
 [input]
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmv7a11j2cp1n"]
+
+[ext_resource type="Texture2D" uid="uid://b2k1dpvurk4fm" path="res://recursos/estrella.png" id="1_k1if1"]
+[ext_resource type="Script" path="res://scripts/poder_1.gd" id="1_pvi6v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cef8o"]
+radius = 32.0
+
+[node name="Poder 1" type="Area2D" groups=["poderes"]]
+script = ExtResource("1_pvi6v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k1if1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cef8o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,6 +3,7 @@ extends Node2D
 var puntaje_p1 = 0
 var puntaje_p2 = 0
 
+@onready var poder_1 = preload("res://scena/poder_1.tscn")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -20,7 +21,7 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 func reset():
 	var random_x_direction = 1 if randf() < 0.5 else -1
 	var random_y_direction = 1 if randf() < 0.5 else -1
-	var velocidad_inicial = 120
+	var velocidad_inicial = 100.0
 	
 	$Pelota.position = Vector2 (576,320)
 	$Pelota.velocity = Vector2(velocidad_inicial*random_x_direction,velocidad_inicial*random_y_direction)
@@ -32,4 +33,10 @@ func _on_timer_timeout() -> void:
 	
 	elif  puntaje_p2 > puntaje_p1 and puntaje_p2 >= 5:
 		get_tree().change_scene_to_file("res://scena/Ganador2.tscn")
-		
+
+
+func _on_timer_2_timeout() -> void:
+	var poder = poder_1 . instantiate()
+	poder. position.x = randi_range(5,get_viewport().size.x)
+	poder.position.y = randi_range(3,get_viewport().size.y)
+	add_child(poder)

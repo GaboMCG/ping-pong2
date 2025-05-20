@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmv7a11j2cp1n"]
+
+[ext_resource type="Texture2D" uid="uid://b2k1dpvurk4fm" path="res://recursos/estrella.png" id="1_k1if1"]
+
+[sub_resource type="GDScript" id="GDScript_bqqqr"]
+script/source = "extends 
+
+var segundos = 5
+var agotado = 0
+	
+	
+func _physics_process(delta: float) -> void:
+	
+	segundos -= delta
+	
+
+func _on_timer_timeout() -> void:
+	
+	
+	
+	$Timerpass.start(segundos)
+	
+	#if $Timer.start(segundos) <= agotado:
+	
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cef8o"]
+radius = 32.0
+
+[node name="Poder 1" type="Area2D" groups=["poderes"]]
+script = SubResource("GDScript_bqqqr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k1if1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cef8o")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

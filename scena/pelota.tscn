@@ -335,6 +335,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8anuy"]
+radius = 11.0
 
 [node name="Pelota" type="CharacterBody2D" groups=["Pelota"]]
 position = Vector2(576, 320)
@@ -347,11 +348,13 @@ shape = SubResource("CircleShape2D_d23ul")
 position = Vector2(7.62939e-06, 32)
 scale = Vector2(0.7625, 0.65)
 sprite_frames = SubResource("SpriteFrames_lwx53")
-animation = &"burst"
-frame_progress = 0.404901
+animation = &"idle"
+frame_progress = 0.852166
 speed_scale = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8anuy")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

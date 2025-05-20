@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfe125ih2fpvj"]
+
+[ext_resource type="Script" path="res://scripts/menu_de_inicio.gd" id="1_8v88h"]
+[ext_resource type="Texture2D" uid="uid://dybuquw5ta6jw" path="res://recursos/ying yang.jpg" id="2_2u3gt"]
+[ext_resource type="FontFile" uid="uid://cggmb64q23tb" path="res://recursos/Game Bubble.otf" id="3_msryt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_udjwa"]
+font = ExtResource("3_msryt")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_oypsr"]
+font = ExtResource("3_msryt")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_se061"]
+font_color = Color(0, 0, 0, 0.709804)
+
+[node name="menu de inicio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8v88h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2u3gt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 54.0
+offset_right = 394.0
+offset_bottom = 163.0
+text = "Ping Pong"
+label_settings = SubResource("LabelSettings_udjwa")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 270.0
+offset_right = 690.0
+offset_bottom = 331.0
+theme_override_fonts/font = ExtResource("3_msryt")
+theme_override_font_sizes/font_size = 50
+text = "Play Now"
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 4.0
+offset_right = 242.0
+offset_bottom = 73.0
+text = "Now"
+label_settings = SubResource("LabelSettings_oypsr")
+
+[node name="Gabo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1011.0
+offset_top = 593.0
+offset_right = 1148.0
+offset_bottom = 642.0
+text = "Clase Adakademy
+                A: Gabo"
+label_settings = SubResource("LabelSettings_se061")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
